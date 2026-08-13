@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>@260 Medical Center | Multidisciplinary Healthcare in Pretoria</title>
+  <meta name="description" content="@260 Medical Center is a multidisciplinary healthcare facility in Montana/Sinoville, Pretoria, offering professional healthcare services under one roof.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- reset & base ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a1e24;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ----- enhanced fade system with delays & categories ----- */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* categorical delays for sequential magic */
+    .cat-1 { transition-delay: 0.05s; }
+    .cat-2 { transition-delay: 0.12s; }
+    .cat-3 { transition-delay: 0.20s; }
+    .cat-4 { transition-delay: 0.28s; }
+    .cat-5 { transition-delay: 0.36s; }
+    .cat-6 { transition-delay: 0.44s; }
+    .cat-7 { transition-delay: 0.52s; }
+    .cat-8 { transition-delay: 0.60s; }
+    .cat-9 { transition-delay: 0.68s; }
+    .cat-10 { transition-delay: 0.76s; }
+    .cat-11 { transition-delay: 0.84s; }
+    .cat-12 { transition-delay: 0.92s; }
+    .cat-13 { transition-delay: 1.00s; }
+    .cat-14 { transition-delay: 1.08s; }
+    .cat-15 { transition-delay: 1.16s; }
+
+    /* ----- header (light, logo only) ----- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #ffffff;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.01);
+    }
+    header.scrolled {
+      padding: 6px 0;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.07);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+    }
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .brand .logo-img img {
+      height: 50px;
+      width: auto;
+      display: block;
+      transition: height 0.4s ease;
+    }
+    header.scrolled .brand .logo-img img { height: 38px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #2a3a4a;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2b6c8f;
+      transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #2b6c8f; }
+    .nav-links .btn-outline-dark {
+      border: 1.5px solid #2b6c8f;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #2b6c8f;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .nav-links .btn-outline-dark:hover {
+      background: #2b6c8f;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(43,108,143,0.18);
+    }
+    .nav-links .btn-outline-dark::after { display: none; }
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #1a1e24;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .hamburger:hover { transform: scale(1.1); }
+
+    /* ----- hero with pic6.jpg ----- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background: #f5f8fa;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('pic6.jpg') center center / cover no-repeat;
+      opacity: 0;
+      transition: opacity 1.8s ease, transform 1.8s ease;
+      z-index: 0;
+      transform: scale(1.04);
+    }
+    .hero-bg.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.65) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 60px 0;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(43,108,143,0.10);
+      color: #2b6c8f;
+      padding: 7px 22px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      border: 1px solid rgba(43,108,143,0.08);
+      backdrop-filter: blur(4px);
+    }
+    .hero-content h1 {
+      font-size: 4.4rem;
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: #1a1e24;
+    }
+    .hero-content h1 .highlight {
+      color: #2b6c8f;
+      position: relative;
+    }
+    .hero-content h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: rgba(43,108,143,0.15);
+      border-radius: 4px;
+    }
+    .hero-content .lead {
+      font-size: 1.2rem;
+      margin: 24px 0 34px;
+      color: #3d4a57;
+      max-width: 520px;
+      line-height: 1.8;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+    .btn-primary {
+      background: #1a1e24;
+      color: #fff;
+      padding: 16px 44px;
+      border-radius: 60px;
+      font-weight: 600;
+      border: none;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: inline-block;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:hover {
+      background: #2b6c8f;
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(43,108,143,0.30);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #1a1e24;
+      padding: 14px 36px;
+      border-radius: 60px;
+      border: 1.5px solid #c5d4e0;
+      font-weight: 500;
+      transition: all 0.4s;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+    .btn-secondary:hover {
+      border-color: #2b6c8f;
+      color: #2b6c8f;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.04);
+    }
+    .hero-stats {
+      margin-top: 42px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stats .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #4f6172;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .hero-stats .stat-item i {
+      color: #2b6c8f;
+      font-size: 1.3rem;
+      transition: transform 0.3s;
+    }
+    .hero-stats .stat-item:hover i { transform: scale(1.15); }
+
+    /* ----- quick info strip ----- */
+    .info-strip {
+      background: #f7f9fb;
+      padding: 48px 0;
+      border-top: 1px solid #eef2f6;
+    }
+    .strip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 34px;
+    }
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 8px 0;
+      transition: transform 0.3s;
+    }
+    .info-card:hover { transform: translateX(4px); }
+    .info-card i {
+      font-size: 1.5rem;
+      color: #2b6c8f;
+      width: 28px;
+      text-align: center;
+      margin-top: 2px;
+      transition: transform 0.3s;
+    }
+    .info-card:hover i { transform: scale(1.1); }
+    .info-card h4 { font-weight: 600; font-size: 1rem; margin-bottom: 3px; }
+    .info-card p { font-size: 0.9rem; color: #4f5e6e; line-height: 1.5; }
+
+    /* ----- about ----- */
+    .about {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.04);
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .about-image:hover img { transform: scale(1.015); }
+    .about-content .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 3.5px;
+      color: #2b6c8f;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .about-content h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin: 14px 0 24px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .about-content p {
+      color: #3d4855;
+      font-size: 1.05rem;
+      max-width: 90%;
+      line-height: 1.9;
+    }
+    .about-content .link-arrow {
+      margin-top: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: #2b6c8f;
+      transition: gap 0.4s;
+    }
+    .about-content .link-arrow i { transition: transform 0.4s; }
+    .about-content .link-arrow:hover { gap: 16px; }
+    .about-content .link-arrow:hover i { transform: translateX(8px); }
+
+    /* ----- services ----- */
+    .services {
+      background: #fbfcfd;
+      padding: 100px 0;
+    }
+    .services-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 60px;
+    }
+    .services-header h2 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .services-header p { color: #4f5e6e; margin-top: 14px; font-size: 1.05rem; }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 34px;
+    }
+    .service-card {
+      background: #fff;
+      padding: 34px 26px;
+      border-radius: 24px;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid #eef2f6;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2b6c8f, #5a9bbf);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 56px rgba(43,108,143,0.08);
+      border-color: #c5d9e8;
+    }
+    .service-card i {
+      font-size: 2.4rem;
+      color: #2b6c8f;
+      margin-bottom: 18px;
+      display: inline-block;
+      transition: transform 0.5s;
+    }
+    .service-card:hover i { transform: scale(1.1) rotate(-2deg); }
+    .service-card h4 { font-weight: 600; font-size: 1.1rem; margin-bottom: 6px; }
+    .service-card p { font-size: 0.9rem; color: #5d6d7e; line-height: 1.6; }
+
+    /* ----- practitioners with profile modals ----- */
+    .practitioners {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .practitioners-header { text-align: center; margin-bottom: 60px; }
+    .practitioners-header h2 { font-size: 2.6rem; font-weight: 600; }
+    .practitioner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+      gap: 34px;
+    }
+    .practitioner-card {
+      background: #f9fafc;
+      border-radius: 24px;
+      padding: 32px 20px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid #eef2f6;
+      cursor: pointer;
+      position: relative;
+    }
+    .practitioner-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      border: 1.5px solid transparent;
+      transition: border-color 0.4s;
+    }
+    .practitioner-card:hover::after { border-color: #2b6c8f; }
+    .practitioner-card:hover {
+      background: #f2f6fa;
+      transform: translateY(-10px);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.04);
+    }
+    .practitioner-card .avatar {
+      font-size: 2.8rem;
+      color: #2b6c8f;
+      margin-bottom: 14px;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .practitioner-card:hover .avatar { transform: scale(1.08); }
+    .practitioner-card h4 { font-weight: 600; font-size: 1.05rem; }
+    .practitioner-card .specialty { font-size: 0.85rem; color: #4f5e6e; margin-top: 2px; }
+    .practitioner-card .service-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #e6edf5;
+      color: #1a2a3a;
+      padding: 4px 18px;
+      border-radius: 40px;
+      margin-top: 12px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: all 0.4s;
+    }
+    .practitioner-card:hover .service-tag { background: #d0dfec; transform: scale(1.02); }
+    .practitioner-card .view-profile {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: #2b6c8f;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .practitioner-card .view-profile i { transition: transform 0.4s; }
+    .practitioner-card:hover .view-profile i { transform: translateX(6px); }
+
+    /* --- Profile Modal --- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: modalFade 0.35s ease;
+    }
+    .modal-overlay.active { display: flex; }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-content {
+      background: #fff;
+      max-width: 540px;
+      width: 100%;
+      border-radius: 32px;
+      padding: 44px 38px 34px;
+      box-shadow: 0 40px 96px rgba(0,0,0,0.14);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: modalContent 0.4s ease;
+    }
+    @keyframes modalContent {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 1.6rem;
+      color: #8a9aa8;
+      cursor: pointer;
+      transition: all 0.4s;
+      background: none;
+      border: none;
+    }
+    .modal-close:hover { color: #1a1e24; transform: rotate(90deg); }
+    .modal-content .modal-avatar {
+      font-size: 3.4rem;
+      color: #2b6c8f;
+      text-align: center;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .modal-content h3 { font-size: 1.7rem; font-weight: 600; text-align: center; }
+    .modal-content .modal-specialty {
+      text-align: center;
+      color: #4f5e6e;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+    .modal-content .modal-service {
+      text-align: center;
+      background: #e6edf5;
+      padding: 5px 20px;
+      border-radius: 40px;
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin: 0 auto 20px;
+    }
+    .modal-content .modal-bio {
+      color: #2d3a48;
+      line-height: 1.9;
+      font-size: 0.95rem;
+      border-top: 1px solid #eef2f6;
+      padding-top: 20px;
+      margin-top: 8px;
+    }
+    .modal-content .modal-bio strong { color: #1a1e24; }
+
+    /* visual divider (pic3) */
+    .visual-divider {
+      margin: 60px 0 10px;
+    }
+    .visual-divider img {
+      width: 100%;
+      border-radius: 28px;
+      max-height: 360px;
+      object-fit: cover;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+      transition: transform 0.6s;
+    }
+    .visual-divider img:hover { transform: scale(1.005); }
+
+    /* why choose */
+    .why-choose {
+      background: #f7f9fb;
+      padding: 100px 0;
+    }
+    .why-choose h2 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 52px;
+      letter-spacing: -0.02em;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 44px;
+    }
+    .why-item {
+      text-align: center;
+      padding: 12px;
+      transition: transform 0.4s;
+    }
+    .why-item:hover { transform: translateY(-6px); }
+    .why-item i {
+      font-size: 2.6rem;
+      color: #2b6c8f;
+      margin-bottom: 16px;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .why-item:hover i { transform: scale(1.08); }
+    .why-item h4 { font-weight: 600; margin-bottom: 6px; font-size: 1.05rem; }
+    .why-item p { font-size: 0.9rem; color: #4f5e6e; line-height: 1.6; }
+
+    /* appointment */
+    .appointment {
+      background: #fbfcfd;
+      padding: 100px 0;
+    }
+    .appointment h2 { font-size: 2.6rem; font-weight: 600; }
+    .appointment .sub { color: #4f5e6e; margin-bottom: 36px; font-size: 1.05rem; }
+    .app-form {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 52px 52px 40px;
+      border-radius: 32px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: box-shadow 0.4s;
+    }
+    .app-form:hover { box-shadow: 0 12px 56px rgba(0,0,0,0.04); }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .form-group { margin-bottom: 22px; }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: #1e2a36;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid #dce3eb;
+      border-radius: 18px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #fafcfe;
+      transition: all 0.35s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #2b6c8f;
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(43,108,143,0.06);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .btn-submit {
+      background: #1a1e24;
+      color: #fff;
+      padding: 17px 46px;
+      border: none;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.4s;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-submit:hover {
+      background: #2b6c8f;
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(43,108,143,0.22);
+    }
+    .form-footnote { margin-top: 20px; font-size: 0.85rem; color: #5d6d7e; text-align: center; }
+
+    /* contact with map */
+    .contact {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .contact-info h2 { font-size: 2.4rem; font-weight: 600; margin-bottom: 24px; }
+    .contact-address {
+      font-style: normal;
+      line-height: 2;
+      color: #1e2a36;
+      font-size: 1.05rem;
+    }
+    .contact-detail {
+      margin: 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.3s;
+    }
+    .contact-detail:hover { transform: translateX(4px); }
+    .contact-detail i { width: 24px; color: #2b6c8f; font-size: 1.1rem; }
+    .contact-buttons {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      padding: 13px 34px;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: all 0.4s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-whatsapp:hover { background: #1da851; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37,211,102,0.25); }
+    .btn-maps {
+      background: #1a1e24;
+      color: #fff;
+      padding: 13px 34px;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: all 0.4s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-maps:hover { background: #2b6c8f; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(43,108,143,0.20); }
+    .hours-card {
+      background: #f7f9fb;
+      padding: 36px;
+      border-radius: 28px;
+      border: 1px solid #eef2f6;
+      transition: transform 0.4s;
+    }
+    .hours-card:hover { transform: translateY(-4px); }
+    .hours-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .hours-card ul { margin-top: 18px; }
+    .hours-card li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #e6edf5;
+      font-size: 0.95rem;
+    }
+    .hours-card li:last-child { border-bottom: none; }
+    .map-container {
+      margin-top: 28px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 200px;
+      border: 0;
+      display: block;
+    }
+
+    /* social + footer */
+    .social-footer {
+      background: #f7f9fb;
+      padding: 40px 0;
+      border-top: 1px solid #e6edf5;
+    }
+    .social-icons {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #2b3a48;
+    }
+    .social-icons a {
+      transition: all 0.4s;
+    }
+    .social-icons a:hover {
+      color: #2b6c8f;
+      transform: translateY(-6px) scale(1.05);
+    }
+
+    .footer-dark {
+      background: #14181e;
+      color: #ced8e2;
+      padding: 60px 0 34px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand h3 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+    .footer-brand .tag {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: #8bb9e0;
+      text-transform: uppercase;
+    }
+    .footer-brand p { margin: 16px 0; max-width: 280px; }
+    .footer-links a {
+      display: block;
+      margin: 8px 0;
+      color: #b0c7d9;
+      transition: all 0.3s;
+    }
+    .footer-links a:hover { color: #fff; transform: translateX(6px); }
+    .footer-bottom {
+      border-top: 1px solid #2a3540;
+      margin-top: 48px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #9aacbc;
+    }
+
+    /* floating whatsapp */
+    .float-wa {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25d366;
+      color: #fff;
+      width: 62px;
+      height: 62px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+      z-index: 999;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .float-wa:hover { transform: scale(1.1) rotate(-6deg); background: #20b85c; box-shadow: 0 12px 40px rgba(37,211,102,0.45); }
+
+    /* responsive */
+    @media (max-width: 992px) {
+      .hero-content h1 { font-size: 3.2rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-content p { max-width: 100%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 28px 0 18px;
+        gap: 18px;
+        background: #fff;
+        border-top: 1px solid #eef2f6;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+      .hero-content h1 { font-size: 2.4rem; }
+      .hero { min-height: 70vh; }
+      .hero-content .lead { font-size: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .app-form { padding: 28px; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .practitioner-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .brand .logo-img img { height: 40px; }
+      .modal-content { padding: 28px 20px; }
+      .map-container iframe { height: 150px; }
+      .about-content h2 { font-size: 2.2rem; }
+    }
+    @media (max-width: 480px) {
+      .service-grid, .practitioner-grid { grid-template-columns: 1fr; }
+      .strip-grid { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero-content .lead { font-size: 0.95rem; }
+      .brand .logo-img img { height: 34px; }
+      .hero-stats .stat-item { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER (logo only) -->
+<header id="navbar">
+  <div class="container nav-flex">
+    <div class="brand">
+      <div class="logo-img">
+        <img src="logo1.jpg" alt="@260 Medical Center logo">
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#practitioners">Practitioners</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#appointment" class="btn-outline-dark">Book an Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO with pic6.jpg -->
+<section id="home" class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-badge fade-section cat-1">★ Premium Healthcare</div>
+    <h1 class="fade-section cat-2">Wholesome Care.<br><span class="highlight">All Under One Roof.</span></h1>
+    <p class="lead fade-section cat-3">@260 Medical Center brings together a multidisciplinary team of healthcare professionals dedicated to providing accessible, professional and patient-centred care in Pretoria.</p>
+    <div class="hero-buttons fade-section cat-4">
+      <a href="#appointment" class="btn-primary">Book an Appointment</a>
+      <a href="#services" class="btn-secondary">Explore Our Services</a>
+    </div>
+    <div class="hero-stats fade-section cat-5">
+      <span class="stat-item"><i class="fas fa-user-md"></i> 10+ Specialists</span>
+      <span class="stat-item"><i class="fas fa-stethoscope"></i> 10 Services</span>
+      <span class="stat-item"><i class="fas fa-map-pin"></i> Pretoria</span>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK INFO STRIP -->
+<section class="info-strip">
+  <div class="container strip-grid">
+    <div class="info-card fade-section cat-1"><i class="fas fa-user-md"></i><div><h4>Multidisciplinary Care</h4><p>Multiple healthcare professionals under one roof.</p></div></div>
+    <div class="info-card fade-section cat-2"><i class="fas fa-location-dot"></i><div><h4>Convenient Location</h4><p>260 Sefako Makgatho Drive, Montana/Sinoville, Pretoria.</p></div></div>
+    <div class="info-card fade-section cat-3"><i class="fas fa-heart"></i><div><h4>Professional Care</h4><p>A range of healthcare services for individuals and families.</p></div></div>
+    <div class="info-card fade-section cat-4"><i class="fas fa-calendar-check"></i><div><h4>Appointment Based</h4><p>Contact our team to arrange your consultation.</p></div></div>
+  </div>
+</section>
+
+<!-- ABOUT (pic2) -->
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-image fade-section cat-1"><img src="pic4.jpg" alt="Modern medical suite interior" loading="lazy"></div>
+    <div class="about-content fade-section cat-2">
+      <div class="eyebrow">About @260</div>
+      <h2>Healthcare Designed Around You.</h2>
+      <p>@260 Medical Center is a multidisciplinary healthcare facility bringing together different healthcare professionals in one convenient location. We focus on patient-centred care, professional expertise, and a welcoming environment for all.</p>
+      <a href="#practitioners" class="link-arrow">Meet Our Practitioners <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="services-header fade-section cat-1">
+      <h2>Comprehensive Care, In One Place</h2>
+      <p>Access a range of healthcare professionals and specialised services from one convenient medical centre.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card fade-section cat-1"><i class="fas fa-bone"></i><h4>Orthopaedic & Spine Surgery</h4><p>Expert surgical care for spine and musculoskeletal conditions.</p></div>
+      <div class="service-card fade-section cat-2"><i class="fas fa-stethoscope"></i><h4>General Practice</h4><p>Family medicine and primary healthcare services.</p></div>
+      <div class="service-card fade-section cat-3"><i class="fas fa-female"></i><h4>Obstetrics & Gynaecology</h4><p>Women’s health, pregnancy, and reproductive care.</p></div>
+      <div class="service-card fade-section cat-4"><i class="fas fa-tooth"></i><h4>Dentistry</h4><p>Comprehensive oral health and dental treatments.</p></div>
+      <div class="service-card fade-section cat-5"><i class="fas fa-hand"></i><h4>Physiotherapy</h4><p>Rehabilitation and movement therapy.</p></div>
+      <div class="service-card fade-section cat-6"><i class="fas fa-eye"></i><h4>Optometry</h4><p>Eye exams, prescriptions, and vision care.</p></div>
+      <div class="service-card fade-section cat-7"><i class="fas fa-apple-alt"></i><h4>Dietetics</h4><p>Nutritional guidance and dietary planning.</p></div>
+      <div class="service-card fade-section cat-8"><i class="fas fa-brain"></i><h4>Clinical Psychology</h4><p>Mental health support and therapy.</p></div>
+      <div class="service-card fade-section cat-9"><i class="fas fa-spa"></i><h4>Aesthetics</h4><p>Medical aesthetic and skin treatments.</p></div>
+      <div class="service-card fade-section cat-10"><i class="fas fa-procedures"></i><h4>Medical Orthotics & Prosthetics</h4><p>Custom orthotic and prosthetic solutions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTITIONERS with profile modals -->
+<section id="practitioners" class="practitioners">
+  <div class="container">
+    <div class="practitioners-header fade-section cat-1"><h2>Meet Our Healthcare Professionals</h2></div>
+    <div class="practitioner-grid">
+      <div class="practitioner-card fade-section cat-1" data-name="Dr. ZM Khoza" data-specialty="Spine & Orthopaedic Surgeon" data-service="Orthopaedic & Spine Surgery" data-bio="Dr. Khoza is a renowned orthopaedic surgeon with over 15 years of experience in complex spine and joint replacement surgeries. He is committed to restoring mobility and improving quality of life for his patients.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>Dr. ZM Khoza</h4>
+        <div class="specialty">Spine & Orthopaedic Surgeon</div>
+        <span class="service-tag">Orthopaedic & Spine Surgery</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-2" data-name="Dr. R Moema" data-specialty="General Practitioner & Aesthetics" data-service="General Practice / Aesthetics" data-bio="Dr. Moema is a dedicated GP with a special interest in aesthetic medicine. She combines her expertise in family medicine with advanced aesthetic treatments to help patients look and feel their best.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>Dr. R Moema</h4>
+        <div class="specialty">General Practitioner & Aesthetics</div>
+        <span class="service-tag">General Practice / Aesthetics</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-3" data-name="Dr. S Ndlovu" data-specialty="Obstetrician & Gynaecologist" data-service="Obstetrics & Gynaecology" data-bio="Dr. Ndlovu is a compassionate OB/GYN dedicated to women's health at every stage of life. She provides expert care in pregnancy, childbirth, and gynaecological conditions.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>Dr. S Ndlovu</h4>
+        <div class="specialty">Obstetrician & Gynaecologist</div>
+        <span class="service-tag">Obstetrics & Gynaecology</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-4" data-name="T. Khoza" data-specialty="Dietitian" data-service="Dietetics" data-bio="T. Khoza is a registered dietitian with a passion for preventive nutrition. She works with patients to develop sustainable eating plans that support overall health and manage chronic conditions.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>T. Khoza</h4>
+        <div class="specialty">Dietitian</div>
+        <span class="service-tag">Dietetics</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-5" data-name="Dr. SR Ramogayana" data-specialty="Dentist" data-service="Dentistry" data-bio="Dr. Ramogayana provides comprehensive dental care with a gentle touch. From routine cleanings to complex restorative procedures, he is committed to your oral health and confident smile.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>Dr. SR Ramogayana</h4>
+        <div class="specialty">Dentist</div>
+        <span class="service-tag">Dentistry</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-6" data-name="An Nkuna" data-specialty="Optometrist" data-service="Optometry" data-bio="An Nkuna is a skilled optometrist dedicated to preserving and enhancing your vision. She provides thorough eye exams, prescribes corrective lenses, and manages various eye conditions.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>An Nkuna</h4>
+        <div class="specialty">Optometrist</div>
+        <span class="service-tag">Optometry</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-7" data-name="PP Mathebula" data-specialty="Medical Orthotist Prosthetist" data-service="Medical Orthotics & Prosthetics" data-bio="PP Mathebula is a highly skilled orthotist and prosthetist, creating custom devices that restore function and mobility. His work helps patients regain independence and quality of life.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>PP Mathebula</h4>
+        <div class="specialty">Medical Orthotist Prosthetist</div>
+        <span class="service-tag">Medical Orthotics & Prosthetics</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-8" data-name="LJ Mohale" data-specialty="Clinical Psychologist" data-service="Clinical Psychology" data-bio="LJ Mohale is a clinical psychologist providing evidence-based therapy for anxiety, depression, trauma, and life transitions. She creates a safe, confidential space for healing and growth.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>LJ Mohale</h4>
+        <div class="specialty">Clinical Psychologist</div>
+        <span class="service-tag">Clinical Psychology</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-9" data-name="LM Masalesa" data-specialty="Physiotherapist" data-service="Physiotherapy" data-bio="LM Masalesa is a dedicated physiotherapist helping patients recover from injury, surgery, and chronic pain. She uses evidence-based techniques to restore movement and function.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>LM Masalesa</h4>
+        <div class="specialty">Physiotherapist</div>
+        <span class="service-tag">Physiotherapy</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="practitioner-card fade-section cat-10" data-name="N Machitela" data-specialty="Physiotherapist" data-service="Physiotherapy" data-bio="N Machitela is a passionate physiotherapist with expertise in sports rehabilitation and musculoskeletal therapy. He helps athletes and individuals return to peak performance.">
+        <span class="avatar"><i class="fas fa-user-md"></i></span>
+        <h4>N Machitela</h4>
+        <div class="specialty">Physiotherapist</div>
+        <span class="service-tag">Physiotherapy</span>
+        <div class="view-profile">View Profile <i class="fas fa-arrow-right"></i></div>
+      </div>
+    </div>
+    <!-- visual pic3 -->
+    <div class="visual-divider fade-section cat-1"><img src="pic3.jpg" alt="Medical center environment"></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-choose">
+  <div class="container">
+    <h2 class="fade-section cat-1">Care That Brings Everything Closer.</h2>
+    <div class="why-grid">
+      <div class="why-item fade-section cat-1"><i class="fas fa-people-group"></i><h4>Multiple Disciplines</h4><p>Access different healthcare services within one medical centre.</p></div>
+      <div class="why-item fade-section cat-2"><i class="fas fa-map-pin"></i><h4>Convenient Location</h4><p>Conveniently situated in Montana/Sinoville, Pretoria.</p></div>
+      <div class="why-item fade-section cat-3"><i class="fas fa-hand-holding-heart"></i><h4>Patient Focused</h4><p>A welcoming environment designed around the needs of patients.</p></div>
+      <div class="why-item fade-section cat-4"><i class="fas fa-building"></i><h4>Professional Environment</h4><p>A modern multidisciplinary medical setting.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment" class="appointment">
+  <div class="container">
+    <h2 class="fade-section cat-1">Book an Appointment</h2>
+    <p class="sub fade-section cat-2">Complete the form below and our team will contact you to confirm your appointment.</p>
+    <form id="appointmentForm" class="app-form fade-section cat-3" novalidate>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" required placeholder="e.g. John Doe"></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" required placeholder="+27 12 345 6789"></div>
+      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" id="email" required placeholder="john@example.com"></div>
+      <div class="form-row">
+        <div class="form-group"><label>Preferred Service</label><select id="service"><option>General Practice</option><option>Orthopaedic Surgery</option><option>Dentistry</option><option>Physiotherapy</option><option>Optometry</option><option>Dietetics</option><option>Clinical Psychology</option><option>Aesthetics</option></select></div>
+        <div class="form-group"><label>Preferred Practitioner</label><select id="practitioner"><option>Dr. ZM Khoza</option><option>Dr. R Moema</option><option>Dr. S Ndlovu</option><option>T. Khoza</option><option>Dr. SR Ramogayana</option><option>An Nkuna</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Preferred Date</label><input type="date" id="prefDate"></div>
+        <div class="form-group"><label>Preferred Time</label><input type="time" id="prefTime"></div>
+      </div>
+      <div class="form-group"><label>Reason for Appointment</label><textarea id="reason" placeholder="Brief reason for your visit"></textarea></div>
+      <div class="form-group"><label>Additional Message</label><textarea id="message" placeholder="Any extra information"></textarea></div>
+      <button type="submit" class="btn-submit" id="submitBtn">Request Appointment</button>
+      <div id="formFeedback" style="margin-top:18px; text-align:center; font-weight:500;"></div>
+      <div class="form-footnote">Our team will contact you to confirm availability and appointment details.</div>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT with map -->
+<section id="contact" class="contact">
+  <div class="container contact-grid">
+    <div class="contact-info fade-section cat-1">
+      <h2>Visit @260 Medical Center</h2>
+      <address class="contact-address">
+        260 Sefako Makgatho Drive<br>Montana/Sinoville<br>Pretoria<br>South Africa
+      </address>
+      <div class="contact-detail"><i class="fas fa-phone"></i> +27 12 345 6789</div>
+      <div class="contact-detail"><i class="fas fa-envelope"></i> info@260medical.co.za</div>
+      <div class="contact-detail"><i class="fab fa-whatsapp"></i> +27 82 123 4567</div>
+      <div class="contact-detail"><i class="fas fa-clock"></i> Mon–Fri: 8:00 – 17:00</div>
+      <div class="contact-buttons">
+        <a href="#" class="btn-maps" id="directionsBtn"><i class="fas fa-map"></i> Get Directions</a>
+        <a href="#" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+      <!-- Map embedded -->
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3590.803466608022!2d28.280475!3d-25.789943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e955f8a7e8d3b0f%3A0x4b1b9a0b7f1b0b0!2s260%20Sefako%20Makgatho%20Dr%2C%20Montana%2C%20Pretoria%2C%200151!5e0!3m2!1sen!2sza!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="hours-card fade-section cat-2">
+      <h4><i class="fas fa-clock" style="color:#2b6c8f;"></i> Operating Hours</h4>
+      <ul>
+        <li><span>Monday – Friday</span> <span>8:00 – 17:00</span></li>
+        <li><span>Saturday</span> <span>9:00 – 13:00</span></li>
+        <li><span>Sunday</span> <span>Closed</span></li>
+        <li><span>Public Holidays</span> <span>Closed</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL + FOOTER -->
+<div class="social-footer">
+  <div class="container social-icons">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+</div>
+
+<footer class="footer-dark">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <h3>@260 Medical Center</h3>
+      <div class="tag">Wholesome Care</div>
+      <p>Multidisciplinary healthcare under one roof in Pretoria.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#practitioners">Practitioners</a><a href="#contact">Contact</a><a href="#appointment">Book an Appointment</a>
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">POPIA / Privacy Notice</a><a href="#">Medical Disclaimer</a><a href="#">Cookie Policy</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 @260 Medical Center. All rights reserved.</span>
+    <span>Website by Monarch Technologies</span>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="#" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Profile Modal -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+    <span class="modal-avatar"><i class="fas fa-user-md"></i></span>
+    <h3 id="modalName">Dr. Name</h3>
+    <div class="modal-specialty" id="modalSpecialty">Specialty</div>
+    <div style="text-align:center;"><span class="modal-service" id="modalService">Service</span></div>
+    <div class="modal-bio" id="modalBio">Bio information goes here.</div>
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+  (function() {
+    // load hero background (pic6.jpg)
+    const heroBg = document.getElementById('heroBg');
+    setTimeout(() => heroBg.classList.add('loaded'), 120);
+
+    // hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinks.classList.toggle('open');
+    });
+
+    // scroll header
+    const header = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 60) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // fade sections with IntersectionObserver (categorical delays)
+    const fadeEls = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Profile Modal
+    const modal = document.getElementById('profileModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalName = document.getElementById('modalName');
+    const modalSpecialty = document.getElementById('modalSpecialty');
+    const modalService = document.getElementById('modalService');
+    const modalBio = document.getElementById('modalBio');
+
+    document.querySelectorAll('.practitioner-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const name = this.dataset.name;
+        const specialty = this.dataset.specialty;
+        const service = this.dataset.service;
+        const bio = this.dataset.bio;
+        modalName.textContent = name;
+        modalSpecialty.textContent = specialty;
+        modalService.textContent = service;
+        modalBio.innerHTML = `<strong>About ${name}</strong><br><br>${bio}`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    modalClose.addEventListener('click', function() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Appointment form
+    const form = document.getElementById('appointmentForm');
+    const feedback = document.getElementById('formFeedback');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!name || !phone || !email) {
+        feedback.innerHTML = '<span style="color:#b02a2a;">Please fill in all required fields.</span>';
+        return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        feedback.innerHTML = '<span style="color:#b02a2a;">Please enter a valid email address.</span>';
+        return;
+      }
+      const phoneClean = phone.replace(/[+\s()\-]/g, '');
+      if (!phoneClean || phoneClean.length < 8) {
+        feedback.innerHTML = '<span style="color:#b02a2a;">Please enter a valid phone number.</span>';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      feedback.innerHTML = '';
+
+      setTimeout(() => {
+        feedback.innerHTML = '<span style="color:#1f7a4b;">✅ Appointment request sent! Our team will contact you shortly.</span>';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Appointment';
+        form.reset();
+      }, 1400);
+    });
+
+    // smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          navLinks.classList.remove('open');
+        }
+      });
+    });
+
+    // Directions button - open Google Maps
+    document.getElementById('directionsBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open('https://www.google.com/maps/dir//260+Sefako+Makgatho+Dr,+Montana,+Pretoria,+0151/@-25.789943,28.280475,17z', '_blank');
+    });
+
+  })();
+</script>
+<!-- Images used: logo1.jpg, pic2.jpg, pic3.jpg, pic6.jpg (hero) -->
+</body>
+</html>
