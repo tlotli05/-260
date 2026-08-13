@@ -37,7 +37,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* categorical delays for sequential magic */
     .cat-1 { transition-delay: 0.05s; }
     .cat-2 { transition-delay: 0.12s; }
     .cat-3 { transition-delay: 0.20s; }
@@ -133,14 +132,16 @@
     }
     .hamburger:hover { transform: scale(1.1); }
 
-    /* ----- hero with pic6.jpg ----- */
+    /* ----- hero with pic6.jpg – centered & refined ----- */
     .hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       background: #f5f8fa;
       overflow: hidden;
+      text-align: center;
     }
     .hero-bg {
       position: absolute;
@@ -164,8 +165,9 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
-      padding: 60px 0;
+      max-width: 780px;
+      padding: 40px 0;
+      margin: 0 auto;
     }
     .hero-badge {
       display: inline-block;
@@ -182,9 +184,9 @@
       backdrop-filter: blur(4px);
     }
     .hero-content h1 {
-      font-size: 4.4rem;
+      font-size: 4.2rem;
       font-weight: 700;
-      line-height: 1.02;
+      line-height: 1.05;
       letter-spacing: -0.03em;
       color: #1a1e24;
     }
@@ -204,9 +206,9 @@
     }
     .hero-content .lead {
       font-size: 1.2rem;
-      margin: 24px 0 34px;
+      margin: 24px auto 34px;
       color: #3d4a57;
-      max-width: 520px;
+      max-width: 580px;
       line-height: 1.8;
     }
     .hero-buttons {
@@ -214,6 +216,7 @@
       flex-wrap: wrap;
       gap: 18px;
       align-items: center;
+      justify-content: center;
     }
     .btn-primary {
       background: #1a1e24;
@@ -266,6 +269,7 @@
       display: flex;
       gap: 48px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .hero-stats .stat-item {
       display: flex;
@@ -929,7 +933,7 @@
   </div>
 </header>
 
-<!-- HERO with pic6.jpg -->
+<!-- HERO with pic6.jpg – centered & refined -->
 <section id="home" class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
@@ -959,7 +963,7 @@
   </div>
 </section>
 
-<!-- ABOUT (pic2) -->
+<!-- ABOUT (pic4) -->
 <section id="about" class="about">
   <div class="container about-grid">
     <div class="about-image fade-section cat-1"><img src="pic4.jpg" alt="Modern medical suite interior" loading="lazy"></div>
@@ -1217,7 +1221,7 @@
       else header.classList.remove('scrolled');
     });
 
-    // fade sections with IntersectionObserver (categorical delays)
+    // fade sections with IntersectionObserver
     const fadeEls = document.querySelectorAll('.fade-section');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1321,6 +1325,5 @@
 
   })();
 </script>
-<!-- Images used: logo1.jpg, pic2.jpg, pic3.jpg, pic6.jpg (hero) -->
 </body>
 </html>
